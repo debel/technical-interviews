@@ -59,6 +59,20 @@ const textStylesOnly = { '-webkit-text-stroke': '3px black' };
 const topHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-top': '20px', 'margin-bottom': 'auto'};
 const bottomHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-bottom': '20px'};
 
+const yCombinator = indentNormalizer(`// Superfluous proclamations!
+const only = stuff => stuff, getSome = stuff => (console.log(stuff), stuff),
+      immediately = thing => Promise.resolve(typeof thing === 'function' ? thing() : thing),
+      comeHome = withHeavyBags => getSome(withHeavyBags + 'home');
+
+Promise.prototype.and = function(other) { return Promise.all([immediately(this), immediately(other)]); };
+Promise.me = { to(beAFriend) { return immediately(beAFriend); } };
+
+// Art!
+Promise.me.to(getSome('wine'))
+  .and(getSome('cheese'))
+  .and(getSome('bread'))
+  .and(only).then(comeHome);`);
+
 const Presentation = () => (
   <Deck theme={theme} template={template} transitionEffect="fade">
     <Slide id="title">
@@ -169,7 +183,7 @@ const Presentation = () => (
         <UnorderedList>
           <ListItem>Prioritization</ListItem>
           <ListItem>Collaboration skills</ListItem>
-          <ListItem>Culture</ListItem>
+          <ListItem>Values & Culture </ListItem>
         </UnorderedList>
         </FlexBox>
       </FlexBox>
@@ -226,7 +240,7 @@ const Presentation = () => (
       backgroundImage="url('./images/judge.jpg')"
     >
       <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>As an interviewer you are <b>not</b> a judge</Heading>
+        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>As an interviewer you are <b>NOT</b> a judge</Heading>
         <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>you are just collecting evidence</Heading>
       </FlexBox>
     </Slide>
@@ -334,7 +348,7 @@ const Presentation = () => (
           <ListItem>Very high opportunity cost for candidates</ListItem>
           <ListItem>Can imply a culture of expected overtime and bad work/life balance</ListItem>
         </UnorderedList>
-        <Text margin="0px" padding="0px"><i>Useful, but should be time boxed or compensated</i></Text>
+        <Text margin="0px" padding="0px"><i>*Useful, but should be time boxed or compensated</i></Text>
       </FlexBox>
     </Slide>
     <Slide id="rockstar-interview"
@@ -375,7 +389,7 @@ const Presentation = () => (
     <Slide id="inconclusive-interview-explained">
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px">Inconclusive interview</Heading>
-        <Text margin="0px" padding="0px">The interviewer has not collected useful evidence during the interview sessoin</Text>
+        <Text margin="0px" padding="0px">The interviewer has not collected useful evidence during the interview session</Text>
         <UnorderedList>
           <ListItem>The interviewer does not know what type of evidence they need to collect</ListItem>
           <ListItem>The interviewer has no data points to contribute during the wash up</ListItem>
@@ -429,8 +443,9 @@ const Presentation = () => (
         <UnorderedList>
           <ListItem>Dealing with a large number of candidates</ListItem>
           <ListItem>Interviewer's time is precious</ListItem>
-          <ListItem>Start with the interview that might reject the largerst number of candidates</ListItem>
+          <ListItem>Start with the interview that might reject the largerst number of candidates*</ListItem>
         </UnorderedList>
+        <Text margin="0px" padding="0px"><i>*while being careful about false negatives</i></Text>
       </FlexBox>
     </Slide>
     
@@ -517,8 +532,8 @@ const Presentation = () => (
         <Text margin="0px" padding="0px">Discover the limits of the candidates knowledge and experience</Text>
         <UnorderedList>
           <ListItem>Discuss previous projects</ListItem>
-          <ListItem>Candidate's self-evaluation</ListItem>
-          <ListItem>Involvement, leadership and impact</ListItem>
+          <ListItem>Attitude, leadership and impact</ListItem>
+          <ListItem>Encourage candidate's self-evaluation</ListItem>
         </UnorderedList>
       </FlexBox>
     </Slide>
@@ -536,7 +551,7 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px">Bar raiser</Heading>
         <Text margin="0px" padding="0px">A candidate should be better than 50% of current employees</Text>
         <UnorderedList>
-          <ListItem>Performed by a senior interviewer with a large view of the organization</ListItem>
+          <ListItem>Performed by a senior interviewer with a broad view of the organization</ListItem>
           <ListItem>Somewhat fuzzy prescription</ListItem>
         </UnorderedList>
       </FlexBox>
@@ -582,7 +597,7 @@ const Presentation = () => (
       backgroundImage="url('./images/judge.jpg')"
     >
       <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>As an interviewer you are <b>not</b> a judge</Heading>
+        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>As an interviewer you are <b>NOT</b> a judge</Heading>
         <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>you are just collecting evidence</Heading>
       </FlexBox>
     </Slide>
@@ -593,6 +608,15 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px" fontSize="73px" color="primary">Questions?</Heading>
       </FlexBox>
     </Slide>
+    <Slide id="ps-javascritp">
+      <FlexBox height="100%" flexDirection="column">
+        <Heading margin="0px" padding="0px">Ops.. almost forgot the <span style={{color:'white'}}>JavaScript</span> part</Heading>
+        <CodePane fontSize="26px" language="js">
+          {yCombinator}
+        </CodePane>
+      </FlexBox>
+    </Slide>
+    
   </Deck>
 );
 
