@@ -2,7 +2,9 @@
   "name": "javascript-interviews-slides",
   "version": "0.0.1",
   "description": "Technical Interviews: JavaScript Edition",
-  "author": { "name": "Mihail Mikov" },
+  "author": {
+    "name": "Mihail Mikov"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack",

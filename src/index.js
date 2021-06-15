@@ -1,28 +1,17 @@
-import { number } from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-  Appear,
   Box,
-  CodePane,
-  CodeSpan,
   Deck,
   FlexBox,
   FullScreen,
-  Grid,
   Heading,
   Image,
   ListItem,
-  Markdown,
-  Notes,
-  OrderedList,
-  Progress,
   Slide,
-  Stepper,
   Text,
   UnorderedList,
-  indentNormalizer
 } from 'spectacle';
 
 const theme = {
@@ -55,31 +44,23 @@ const template = ({ slideNumber, numberOfSlides }) => (
   </FlexBox>
 );
 
-const textStylesOnly = { '-webkit-text-stroke': '3px black' };
 const topHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-top': '20px', 'margin-bottom': 'auto'};
 const bottomHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-bottom': '20px'};
-
-const yCombinator = indentNormalizer(`// Superfluous proclamations!
-const only = stuff => stuff, getSome = stuff => (console.log(stuff), stuff),
-      immediately = thing => Promise.resolve(typeof thing === 'function' ? thing() : thing),
-      comeHome = withHeavyBags => getSome(withHeavyBags + 'home');
-
-Promise.prototype.and = function(other) { return Promise.all([immediately(this), immediately(other)]); };
-Promise.me = { to(beAFriend) { return immediately(beAFriend); } };
-
-// Art!
-Promise.me.to(getSome('wine'))
-  .and(getSome('cheese'))
-  .and(getSome('bread'))
-  .and(only).then(comeHome);`);
 
 const Presentation = () => (
   <Deck theme={theme} template={template} transitionEffect="fade">
     <Slide id="title">
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px" fontSize="110px">Technical Interviews</Heading>
-        <Heading margin="0px" padding="0px" fontSize="69px">JavaScript Edition</Heading>
-        <Text>Mihail Mikov, js.talks 2020</Text>
+        <Text margin="0px" padding="0px">Mihail Mikov, Beer.js /June '21/</Text>
+      </FlexBox>
+    </Slide>
+    <Slide id="with-vs-without-a-job"
+      backgroundImage="url('./images/with-and-without-a-job.jpg')"
+    >
+      <FlexBox height="100%" flexDirection="column">
+        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>Searching for a new job</Heading>
+        <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>the only reason for a developer to shave</Heading>
       </FlexBox>
     </Slide>
     <Slide id="about-me">
@@ -90,14 +71,7 @@ const Presentation = () => (
         <Text margin="0px" padding="0px">Sci-Fi Fan, Board Game Geek, Juggler</Text>
       </FlexBox>
     </Slide>
-    <Slide id="with-vs-without-a-job"
-      backgroundImage="url('./images/with-and-without-a-job.jpg')"
-    >
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}>The only reason to ever shave -</Heading>
-        <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>trying to find a job</Heading>
-      </FlexBox>
-    </Slide>
+    
     <Slide id="talk-not-about">
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px">This talk is <b><u>NOT</u></b> about</Heading>
@@ -156,9 +130,10 @@ const Presentation = () => (
         </UnorderedList>     
       </FlexBox>
     </Slide>
+    
     <Slide id="interviews-are-about-evidence">
       <FlexBox height="100%" flexDirection="column">
-        <Heading>Interviewers are mainly about one thing...</Heading>
+        <Heading>Interviews are mainly about one thing...</Heading>
       </FlexBox>
     </Slide>
     <Slide id="sherlock"
@@ -172,7 +147,7 @@ const Presentation = () => (
     <Slide id="signals-from-interviews">
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px">Evidence</Heading>
-        <Text margin="0px" padding="0px">about the things interviewers are looking for</Text>
+        <Text margin="0px" padding="0px">about the skills and abilities of the candidate</Text>
         <FlexBox flexDirection="row">
         <UnorderedList>
           <ListItem>Technical knowledge</ListItem>
@@ -205,7 +180,7 @@ const Presentation = () => (
           <ListItem>The candidate solved the problem <u>well</u></ListItem>
           <ListItem>The candidate <u>obviously</u> knew what we were talking about</ListItem>
         </UnorderedList>
-        <Text><i>The underlined qualifiers do not carry actual information</i></Text>
+        <Text><i>*The underlined qualifiers do not carry actual information</i></Text>
       </FlexBox>
     </Slide>
     <Slide id="what-is-good-evidence">
@@ -217,9 +192,10 @@ const Presentation = () => (
           <ListItem>The candidate proactively identified <u>A, B and C</u> as additional concerns</ListItem>
           <ListItem>The candidate was able to clearly explain how <u>M</u> works</ListItem>
         </UnorderedList>
-        <Text><i>The underlined qualifiers are concrete and unbiased</i></Text>
+        <Text><i>*The underlined qualifiers are concrete and unbiased</i></Text>
       </FlexBox>
     </Slide>
+    
     <Slide id="interviewer-detectives"
       backgroundImage="url('./images/csi.jpg')"
     >
@@ -268,12 +244,14 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>is a two-way culture interview</Heading>
       </FlexBox>
     </Slide>
+    
     <Slide id="bad-interview-practices">
     <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px">Some bad<span style={{color:"white"}}>*</span> interview practices</Heading>
         <Text margin="0px" padding="0px"><i>(which might be useful but could do more harm than good)</i></Text>
       </FlexBox>
     </Slide>    
+    
     <Slide id="password-interview"
       backgroundImage="url('./images/pressure.jpg')"
     >
@@ -287,12 +265,14 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px">Password interview</Heading>
         <Text margin="0px" padding="0px">The interviewer expects the candidate to mention specific key words / technologies</Text>
         <UnorderedList>
+          <ListItem>Close-ended questions</ListItem>
           <ListItem>Strong preliminary bias</ListItem>
-          <ListItem>Not evidence based</ListItem>
-          <ListItem>Hard to follow up with a discussion</ListItem>
+          <ListItem>Harder to follow up with a discussion</ListItem>
         </UnorderedList>
+        <Text margin="0px" padding="0px"><i>*Can work as long as it's used a basis for further discussion</i></Text>
       </FlexBox>
     </Slide>
+    
     <Slide id="magic-trick-interview"
       backgroundImage="url('./images/magic.jpg')"
     >
@@ -310,9 +290,10 @@ const Presentation = () => (
           <ListItem>Little or no relavance to actual work expectations</ListItem>
           <ListItem>Can shift the focus of the interview towards irrelevant topics</ListItem>
         </UnorderedList>
-        <Text margin="0px" padding="0px"><i>*Can work well as long as it's used a basis for further discussion</i></Text>
+        <Text margin="0px" padding="0px"><i>*Can work as long as it's used a basis for further discussion</i></Text>
       </FlexBox>
     </Slide>
+    
     <Slide id="paper-coding-interview"
       backgroundImage="url('./images/paper-coding-plain.jpg')"
     >
@@ -330,8 +311,10 @@ const Presentation = () => (
           <ListItem>Candidate is expected to have memorized the documentation</ListItem>
           <ListItem>Little or no relavance to actual work expectations</ListItem>
         </UnorderedList>
+        <Text margin="0px" padding="0px"><i>*Can work with meta-code, or basic language features</i></Text>
       </FlexBox>
     </Slide>
+    
     <Slide id="free-work-interview"
       backgroundImage="url('./images/comfy-at-home.webp')"
     >
@@ -351,6 +334,7 @@ const Presentation = () => (
         <Text margin="0px" padding="0px"><i>*Useful, but should be time boxed or compensated</i></Text>
       </FlexBox>
     </Slide>
+    
     <Slide id="rockstar-interview"
       backgroundImage="url('./images/rockstars.jpg')"
     >
@@ -365,7 +349,7 @@ const Presentation = () => (
         <Text margin="0px" padding="0px">The candidate is judged against an unreasonably high bar</Text>
         <UnorderedList>
           <ListItem>Especially hard for entry level positions</ListItem>
-          <ListItem>No value in reminding (most) candidates they are not Jeff Dean</ListItem>
+          <ListItem>No value in reminding candidates they are not Doug Crockford</ListItem>
           <ListItem>Candidate CVs can create overinflated expectations</ListItem>
         </UnorderedList>
       </FlexBox>
@@ -378,6 +362,7 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>with a 1 year old technology</Heading>
       </FlexBox>
     </Slide>
+    
     <Slide id="inconclusive-interview"
       backgroundImage="url('./images/inconclusive.jpg')"
     >
@@ -393,28 +378,7 @@ const Presentation = () => (
         <UnorderedList>
           <ListItem>The interviewer does not know what type of evidence they need to collect</ListItem>
           <ListItem>The interviewer has no data points to contribute during the wash up</ListItem>
-          <ListItem>The interviewer has wasted the candidates time and effort</ListItem>
-        </UnorderedList>
-      </FlexBox>
-    </Slide>
-    <Slide id="advice-for-candidates"
-      backgroundImage="url('./images/david-vs-goliath.jpg')"
-    >
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}></Heading>
-        <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>Advice for candidates</Heading>
-      </FlexBox>
-    </Slide>
-    <Slide id="advice-for-candidates-explained">
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px">Advice for candidates</Heading>
-        <Text margin="0px" padding="0px"></Text>
-        <UnorderedList>
-          <ListItem>Ask clarifying questions</ListItem>
-          <ListItem>Explain your thought process</ListItem>
-          <ListItem>Demonstate contextual knowledge</ListItem>
-          <ListItem>Allow yourself to politely disagree</ListItem>
-          <ListItem>Don't hide your personality</ListItem>
+          <ListItem>The interviewer has wasted the candidates and the company's time and effort</ListItem>
         </UnorderedList>
       </FlexBox>
     </Slide>
@@ -507,6 +471,7 @@ const Presentation = () => (
           <ListItem>Project managment and prioritization</ListItem>
           <ListItem>Completeness of solution - metrics, error handling, etc</ListItem>
         </UnorderedList>
+        <Text margin="0px" padding="0px"><i>*only confirms the candidate knows how to build a system, not that they can actually do it</i></Text>
       </FlexBox>
     </Slide>
     <Slide id="whiteboard"
@@ -577,6 +542,28 @@ const Presentation = () => (
       </FlexBox>
     </Slide>
     
+    <Slide id="advice-for-candidates"
+      backgroundImage="url('./images/david-vs-goliath.jpg')"
+    >
+      <FlexBox height="100%" flexDirection="column">
+        <Heading margin="0px" padding="0px" color="primary" style={topHeadingStyle}></Heading>
+        <Heading margin="0px" padding="0px" color="primary" style={bottomHeadingStyle}>Advice for candidates</Heading>
+      </FlexBox>
+    </Slide>
+    <Slide id="advice-for-candidates-explained">
+      <FlexBox height="100%" flexDirection="column">
+        <Heading margin="0px" padding="0px">Advice for candidates</Heading>
+        <Text margin="0px" padding="0px"></Text>
+        <UnorderedList>
+          <ListItem>Ask clarifying questions</ListItem>
+          <ListItem>Explain your thought process</ListItem>
+          <ListItem>Demonstate contextual knowledge</ListItem>
+          <ListItem>Allow yourself to politely disagree</ListItem>
+          <ListItem>Don't hide your personality</ListItem>
+        </UnorderedList>
+      </FlexBox>
+    </Slide>
+
     <Slide id="interviewer-detectives-repeat"
       backgroundImage="url('./images/csi.jpg')"
     >
@@ -607,42 +594,8 @@ const Presentation = () => (
         <Heading margin="0px" padding="0px" fontSize="110px">Thank you!</Heading>
         <Heading margin="0px" padding="0px" fontSize="73px" color="primary">Questions?</Heading>
       </FlexBox>
-    </Slide>
-    <Slide id="ps-javascritp">
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px">Ops.. almost forgot the <span style={{color:'white'}}>JavaScript</span> part</Heading>
-        <CodePane fontSize="26px" language="js">
-          {yCombinator}
-        </CodePane>
-      </FlexBox>
-    </Slide>
-    
+    </Slide>    
   </Deck>
 );
 
-
-
 ReactDOM.render(<Presentation />, document.getElementById('root'));
-
-const MoreSlides = (<>
-
-    <Slide id="interviewer-enabler"
-      backgroundImage="url('./images/pressure.jpg')"
-    >
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" padding="0px" color="primary" style={{ '-webkit-text-stroke': '2px black', 'margin-bottom': 'auto'}}></Heading>
-        <Heading margin="0px" padding="0px" color="primary" style={{ '-webkit-text-stroke': '2px black', 'font-size': '68px' }}></Heading>
-      </FlexBox>
-    </Slide>
-
-    <Slide id="interviewer-detectives">
-      <FlexBox height="100%" flexDirection="column">
-        <Image src="./images/interviewer-detectives.jpg" />
-      </FlexBox>
-    </Slide>
-    <Slide id="interviewee-criminal">
-      <FlexBox height="100%" flexDirection="column">
-      <Image src="./images/sloppy-criminals.jpg" />
-      </FlexBox>
-    </Slide>
-</>);
