@@ -47,8 +47,19 @@ const template = ({ slideNumber, numberOfSlides }) => (
 const topHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-top': '20px', 'margin-bottom': 'auto'};
 const bottomHeadingStyle = { '-webkit-text-stroke': '3px black', 'margin-bottom': '20px'};
 
-const Presentation = () => (
-  <Deck theme={theme} template={template} transitionEffect="fade">
+const Presentation = () => {
+  const deckRef = React.useRef();
+  React.useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'PageDown') {
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }), window);
+      } else if (e.code === 'PageUp') {
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }), window);
+      }
+    });
+  });
+
+  return <Deck theme={theme} template={template} transitionEffect="fade" ref={deckRef}>
     <Slide id="title">
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" padding="0px" fontSize="110px">Technical Interviews</Heading>
@@ -596,6 +607,6 @@ const Presentation = () => (
       </FlexBox>
     </Slide>    
   </Deck>
-);
+};
 
 ReactDOM.render(<Presentation />, document.getElementById('root'));
